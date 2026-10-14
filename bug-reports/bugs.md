@@ -32,3 +32,37 @@ Exploratory testing and automated checks are ongoing.
 ## Defect Reporting Rule
 
 Only record a confirmed defect after reproducing the behavior and comparing it with an expected requirement. Include steps to reproduce, expected and actual results, severity, and evidence.
+
+## BUG-SAVED-001: Company logo missing on Saved Jobs page
+
+**Module:** Saved Jobs — UI / Company branding
+
+**Page:** https://crew.tinobritty.me/saved-jobs
+
+**Severity:** Minor to moderate (to be confirmed)
+
+**Priority:** Medium
+
+**Status:** Observed; root cause not confirmed.
+
+### Steps to reproduce
+1. Sign in to the Crew portal.
+2. Navigate to Saved Jobs.
+3. Locate the "Open Source Core Contributor" job card.
+4. Observe its company logo.
+5. Compare it with the Product Designer card and the logo on the Jobs page.
+
+### Expected result
+The company logo should load correctly and display consistently on the Jobs and Saved Jobs pages.
+
+### Actual result
+The first saved job card displays a broken or missing company logo, while the Product Designer card displays its logo. The user reports that the first company's logo displays correctly on the Jobs page.
+
+### Evidence
+Screenshot provided by the tester showing the broken logo on the Saved Jobs page.
+
+### Investigation notes
+Compare the image URL and image-loading behavior between the Jobs and Saved Jobs pages. Check for an invalid image URL, incorrect image mapping, or a failed image request.
+
+### Limitations
+The root cause has not been verified. No confirmed implementation-level defect has been established.
