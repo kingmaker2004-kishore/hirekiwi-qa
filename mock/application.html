@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QA Application Form - Test Mock</title>
+</head>
+<body>
+  <h1>Job Application</h1>
+
+  <form id="application-form">
+    <label for="name">Full name</label>
+    <input id="name" name="name" required>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+
+    <button id="submit-button" type="submit">Submit application</button>
+    <p id="message" role="status"></p>
+  </form>
+
+  <script>
+    const form = document.querySelector('#application-form');
+    const nameInput = document.querySelector('#name');
+    const emailInput = document.querySelector('#email');
+    const button = document.querySelector('#submit-button');
+    const message = document.querySelector('#message');
+
+    let submitting = false;
+    window.submissionCount = 0;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (submitting) return;
+
+      if (!nameInput.value.trim()) {
+        nameInput.setCustomValidity('Full name is required.');
+        nameInput.reportValidity();
+        return;
+      }
+
+      nameInput.setCustomValidity('');
+
+      if (!form.reportValidity()) return;
+
+      submitting = true;
+      window.submissionCount++;
+      button.disabled = true;
+      message.textContent = 'Submitting application...';
+
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      message.textContent = 'Application submitted successfully.';
+      button.disabled = false;
+      submitting = false;
+    });
+  </script>
+</body>
+</html>
